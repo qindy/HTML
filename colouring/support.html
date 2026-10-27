@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="index, follow">
+<title>Support</title>
+<meta name="description" content="Help and contact for the Coloring Paradise app.">
+<style>
+:root{
+  --ink:#2b2a3d;
+  --muted:#6f6d85;
+  --bg:#fdfbf7;
+  --card:#ffffff;
+  --line:#ece8e0;
+  --accent:#7c5cff;
+  --accent-soft:#f1ecff;
+  --green:#1f9d63;
+  --btn-ink:#ffffff;
+  --radius:18px;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --ink:#ecebf5;
+    --muted:#a3a1b8;
+    --bg:#16151d;
+    --card:#1f1e28;
+    --line:#2f2e3b;
+    --accent:#a48cff;
+    --accent-soft:#271f3d;
+    --green:#48c98a;
+    --btn-ink:#16151d;
+  }
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font:16px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans","Noto Sans","Microsoft YaHei",sans-serif;
+  padding:0 0 64px;
+}
+.wrap{max-width:760px;margin:0 auto;padding:0 22px;}
+
+header.top{
+  position:sticky;top:0;z-index:5;
+  background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:saturate(180%) blur(14px);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  border-bottom:1px solid var(--line);
+  padding:12px 0;
+}
+header.top .wrap{display:flex;align-items:center;gap:14px;}
+.brand{display:flex;align-items:center;gap:10px;min-width:0;flex:1;}
+.crayon{font-size:22px;line-height:1;flex:none;}
+h1{font-size:17px;font-weight:700;margin:0;letter-spacing:-0.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+select{
+  flex:none;
+  appearance:none;-webkit-appearance:none;
+  font:inherit;font-size:14px;font-weight:600;
+  color:var(--ink);
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:7px 32px 7px 14px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' fill='none' stroke='%236f6d85' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat:no-repeat;
+  background-position:right 12px center;
+  cursor:pointer;
+}
+html[dir="rtl"] select{padding:7px 14px 7px 32px;background-position:left 12px center;}
+
+main{padding-top:26px;}
+.lede{
+  font-size:17.5px;line-height:1.55;
+  color:var(--ink);
+  margin:0 0 14px;
+}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 30px;}
+.chip{
+  font-size:12.5px;font-weight:600;
+  color:var(--muted);
+  background:var(--accent-soft);
+  border-radius:999px;
+  padding:4px 11px;
+}
+
+section.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:20px 22px;
+  margin:0 0 12px;
+}
+section.card h2{
+  font-size:15.5px;font-weight:700;
+  margin:0 0 8px;
+  letter-spacing:-0.01em;
+}
+section.card p{margin:0 0 10px;color:var(--ink);}
+section.card p:last-child{margin-bottom:0;}
+section.card.hero{border-color:color-mix(in srgb, var(--accent) 34%, var(--line));}
+
+a{color:var(--accent);text-decoration:none;word-break:break-word;}
+a:hover{text-decoration:underline;}
+
+a.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  margin-top:4px;
+  background:var(--accent);
+  color:var(--btn-ink);
+  font-size:15px;font-weight:700;
+  border-radius:999px;
+  padding:11px 20px;
+}
+a.btn:hover{text-decoration:none;filter:brightness(1.06);}
+a.btn .ico{font-size:15px;line-height:1;}
+
+details.qa{
+  border-top:1px solid var(--line);
+  padding:13px 0 2px;
+}
+details.qa:first-of-type{border-top:0;padding-top:2px;}
+details.qa summary{
+  display:flex;align-items:flex-start;gap:10px;
+  cursor:pointer;
+  list-style:none;
+}
+details.qa summary::-webkit-details-marker{display:none;}
+details.qa .q{flex:1;font-size:15px;font-weight:700;line-height:1.45;}
+details.qa .plus{
+  flex:none;
+  width:20px;height:20px;margin-top:2px;
+  border-radius:50%;
+  background:var(--accent-soft);color:var(--accent);
+  font-size:14px;font-weight:700;line-height:20px;text-align:center;
+  transition:transform .18s ease;
+}
+details.qa[open] .plus{transform:rotate(45deg);}
+details.qa .a{
+  margin:9px 0 12px 30px;
+  font-size:14.5px;
+  color:var(--muted);
+}
+html[dir="rtl"] details.qa .a{margin:9px 30px 12px 0;}
+
+ul.bullets{list-style:none;margin:12px 0 0;padding:0;}
+ul.bullets li{
+  display:flex;align-items:flex-start;gap:9px;
+  font-size:14.5px;color:var(--muted);
+  margin:0 0 7px;
+}
+ul.bullets li:last-child{margin-bottom:0;}
+ul.bullets li::before{
+  content:"•";flex:none;color:var(--accent);font-weight:800;
+}
+
+footer.end{
+  margin-top:30px;padding-top:18px;
+  border-top:1px solid var(--line);
+  font-size:13px;color:var(--muted);
+  display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;
+}
+footer.end .dot{opacity:.4;}
+
+html[dir="rtl"] body{text-align:right;}
+html[dir="rtl"] header.top .wrap{flex-direction:row-reverse;}
+
+@media print{
+  header.top{position:static;background:none;border:0;}
+  select{display:none;}
+  section.card{break-inside:avoid;border:1px solid #ddd;}
+  details.qa{display:block;}
+  details.qa .a{display:block;color:#333;}
+  body{background:#fff;color:#000;}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <span class="crayon" aria-hidden="true">🖍️</span>
+      <h1 id="docTitle">Support</h1>
+    </div>
+    <select id="langPicker" aria-label="Language">
+      <option value="en">English</option>
+    </select>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="lede" id="lede"></p>
+  <div class="meta" id="meta"></div>
+  <div id="body"></div>
+  <footer class="end" id="footer"></footer>
+</main>
+
+<script src="support-data.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var INFO = window.SUPPORT_INFO || {};
+  var TEXT = window.SUPPORT_TEXT || {};
+  var LANGS = window.SUPPORT_LANGS || ["en"];
+  var NATIVE = window.SUPPORT_NATIVE_NAMES || {};
+
+  var STORE_KEY = "coloring.support.lang";
+
+  function isLang(code) { return Object.prototype.hasOwnProperty.call(TEXT, code); }
+
+  function pickInitial() {
+    // 0. An explicit ?lang=xx wins, so a link can point at one language.
+    try {
+      var q = new URLSearchParams(location.search).get("lang");
+      if (isLang(q)) return q;
+    } catch (e) {}
+    // 1. The app may inject window.__appLang before the document loads.
+    if (isLang(window.__appLang)) return window.__appLang;
+    // 2. Whatever this browser last chose.
+    try {
+      var saved = localStorage.getItem(STORE_KEY);
+      if (isLang(saved)) return saved;
+    } catch (e) {}
+    // 3. The browser's own preference list.
+    var tags = navigator.languages || [navigator.language || "en"];
+    for (var i = 0; i < tags.length; i++) {
+      var t = tags[i];
+      if (isLang(t)) return t;
+      var short = String(t).split("-")[0];
+      if (isLang(short)) return short;
+      if (short === "zh") return /tw|hk|mo|hant/i.test(t) ? "zh-Hant" : "zh-Hans";
+    }
+    return "en";
+  }
+
+  function appName() { return INFO.appName[lang] || INFO.appName.en; }
+
+  function fill(str) {
+    return String(str)
+      .replace(/\{appName\}/g, appName())
+      .replace(/\{email\}/g, INFO.email)
+      .replace(/\{minAge\}/g, INFO.minAge);
+  }
+
+  function dateText(iso) {
+    var d = new Date(iso + "T00:00:00");
+    try {
+      return d.toLocaleDateString(lang, { year: "numeric", month: "long", day: "numeric" });
+    } catch (e) {
+      return iso;
+    }
+  }
+
+  var lang = "en";
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+
+  function render() {
+    var t = TEXT[lang];
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    document.title = t.title + " · " + appName();
+
+    document.getElementById("docTitle").textContent = t.title;
+    document.getElementById("lede").textContent = fill(t.lede);
+
+    var meta = document.getElementById("meta");
+    meta.textContent = "";
+    meta.appendChild(el("span", "chip", t.updated + " " + dateText(INFO.updatedDate)));
+
+    var body = document.getElementById("body");
+    body.textContent = "";
+
+    // ---- contact ----
+    var contact = el("section", "card hero");
+    contact.appendChild(el("h2", null, t.contactH));
+    contact.appendChild(el("p", null, fill(t.contactP)));
+    var mail = el("a", "btn");
+    mail.href = "mailto:" + INFO.email;
+    mail.appendChild(el("span", "ico", "✉️"));
+    mail.appendChild(el("span", null, INFO.email));
+    contact.appendChild(mail);
+    body.appendChild(contact);
+
+    // ---- faq ----
+    var faq = el("section", "card");
+    faq.appendChild(el("h2", null, t.faqH));
+    t.faq.forEach(function (item, i) {
+      var d = el("details", "qa");
+      if (i === 0) d.open = true;
+      var s = el("summary");
+      s.appendChild(el("span", "q", fill(item.q)));
+      s.appendChild(el("span", "plus", "+"));
+      d.appendChild(s);
+      d.appendChild(el("div", "a", fill(item.a)));
+      faq.appendChild(d);
+    });
+    body.appendChild(faq);
+
+    // ---- what to include ----
+    if (t.tips && t.tips.length) {
+      var tips = el("section", "card");
+      tips.appendChild(el("h2", null, t.tipsH));
+      var ul = el("ul", "bullets");
+      t.tips.forEach(function (line) {
+        var li = el("li");
+        li.appendChild(el("span", null, fill(line)));
+        ul.appendChild(li);
+      });
+      tips.appendChild(ul);
+      body.appendChild(tips);
+    }
+
+    // ---- privacy ----
+    var priv = el("section", "card");
+    priv.appendChild(el("h2", null, t.policyH));
+    priv.appendChild(el("p", null, fill(t.policyP)));
+    if (INFO.policyURL) {
+      var pl = el("a", null, t.policyLink || "Privacy Policy");
+      pl.href = INFO.policyURL;
+      priv.appendChild(pl);
+    }
+    body.appendChild(priv);
+
+    // ---- footer ----
+    var foot = document.getElementById("footer");
+    foot.textContent = "";
+    foot.appendChild(el("span", null, "© " + new Date().getFullYear() + " " + appName()));
+    if (INFO.email) {
+      foot.appendChild(el("span", "dot", "·"));
+      var a = el("a", null, INFO.email);
+      a.href = "mailto:" + INFO.email;
+      foot.appendChild(a);
+    }
+    if (INFO.policyURL) {
+      foot.appendChild(el("span", "dot", "·"));
+      var p2 = el("a", null, t.policyLink || "Privacy Policy");
+      p2.href = INFO.policyURL;
+      foot.appendChild(p2);
+    }
+  }
+
+  function buildPicker() {
+    var sel = document.getElementById("langPicker");
+    sel.textContent = "";
+    LANGS.forEach(function (code) {
+      var o = document.createElement("option");
+      o.value = code;
+      o.textContent = NATIVE[code] || code;
+      sel.appendChild(o);
+    });
+    sel.value = lang;
+    sel.addEventListener("change", function () {
+      lang = sel.value;
+      try { localStorage.setItem(STORE_KEY, lang); } catch (e) {}
+      render();
+    });
+  }
+
+  lang = pickInitial();
+  buildPicker();
+  render();
+})();
+</script>
+</body>
+</html>
