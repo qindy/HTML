@@ -196,6 +196,11 @@ html[dir="rtl"] header.top .wrap{flex-direction:row-reverse;}
   function isLang(code) { return Object.prototype.hasOwnProperty.call(TEXT, code); }
 
   function pickInitial() {
+    // 0. An explicit ?lang=xx wins, so a link can point at one language.
+    try {
+      var q = new URLSearchParams(location.search).get("lang");
+      if (isLang(q)) return q;
+    } catch (e) {}
     // 1. The app injects window.__appLang before the document loads.
     if (isLang(window.__appLang)) return window.__appLang;
     // 2. Whatever this browser last chose.

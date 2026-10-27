@@ -17,8 +17,10 @@ window.POLICY_INFO = {
   version: "1.0",
   /// Youngest age named in the children's section (COPPA uses 13).
   minAge: 13,
-  /// The public copy of this page, linked from the footer.
-  policyURL: "https://regina3579.github.io/colouring-app-for-kids/privacy.html",
+  /// The public copy of this page. Relative on purpose: `privacy.html` sits
+  /// next to this file both in the app bundle and on GitHub Pages, so the same
+  /// link works offline in the app and on the web.
+  policyURL: "privacy.html",
 
   appName: {
     en: "Coloring Paradise",

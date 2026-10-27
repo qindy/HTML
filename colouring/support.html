@@ -73,6 +73,12 @@ select{
 }
 html[dir="rtl"] select{padding:7px 14px 7px 32px;background-position:left 12px center;}
 
+/* Inside the app the navigation bar already says "Support", so the page drops
+   its own title and leaves just the language picker. */
+html.inapp .brand{display:none;}
+html.inapp header.top .wrap{justify-content:flex-end;}
+html.inapp header.top{padding:8px 0;}
+
 main{padding-top:26px;}
 .lede{
   font-size:17.5px;line-height:1.55;
@@ -369,6 +375,8 @@ html[dir="rtl"] header.top .wrap{flex-direction:row-reverse;}
   }
 
   lang = pickInitial();
+  // The app sets this before the document loads; the browser does not.
+  if (window.__inApp) document.documentElement.classList.add("inapp");
   buildPicker();
   render();
 })();

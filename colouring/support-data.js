@@ -18,8 +18,9 @@ window.SUPPORT_INFO = {
   email: "qq595187561@gmail.com",
   updatedDate: "2026-10-27",
   minAge: 13,
-  /// The public policy page the support page links to.
-  policyURL: "https://qindy.github.io/HTML/colouring/privacy.html",
+  /// The policy page this one links to. Relative on purpose: `privacy.html`
+  /// sits next to this file in the app bundle and on GitHub Pages.
+  policyURL: "privacy.html",
 
   appName: {
     en: "Coloring Paradise",
