@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="index, follow">
+<title>Privacy Policy</title>
+<meta name="description" content="Privacy policy for Last Bell: what stays on your device, what never leaves it, and how app blocking works.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <span class="mark" aria-hidden="true">L</span>
+      <h1 id="docTitle">Privacy Policy</h1>
+    </div>
+    <div class="picker">
+      <select id="langPicker" aria-label="Language"></select>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="lede" id="lede"></p>
+  <div class="chips" id="chips"></div>
+  <div id="body"></div>
+  <footer class="end" id="footer"></footer>
+</main>
+
+<noscript>
+  <p style="padding:1.5rem;text-align:center;color:#727e8b">
+    This page needs JavaScript to show the policy in your language.
+  </p>
+</noscript>
+
+<script src="doc.js"></script>
+<script src="privacy-data.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var kit = window.DocKit;
+
+  function chip(text) {
+    return kit.el("span", "chip", text);
+  }
+
+  kit.boot({
+    info: window.POLICY_INFO,
+    text: window.POLICY_TEXT,
+    langs: window.POLICY_LANGS,
+    names: window.POLICY_NATIVE_NAMES,
+    storeKey: "learnity.privacy.lang",
+
+    render: function (s) {
+      var t = s.strings;
+
+      // ---- intro ----
+      document.getElementById("lede").textContent = s.fill(t.lede);
+
+      var chips = document.getElementById("chips");
+      chips.textContent = "";
+      chips.appendChild(chip(t.chipEffective + " " + s.date(s.info.effectiveDate)));
+      chips.appendChild(chip(t.chipUpdated + " " + s.date(s.info.updatedDate)));
+      chips.appendChild(chip(t.chipVersion + " " + s.info.version));
+      chips.appendChild(chip(t.chipOffline));
+
+      // ---- sections ----
+      var body = document.getElementById("body");
+      t.sections.forEach(function (section) {
+        var card = kit.el("section", "card" + (section.kind ? " " + section.kind : ""));
+        if (section.h) card.appendChild(kit.el("h2", null, s.fill(section.h)));
+
+        section.body.forEach(function (entry) {
+          if (entry.h3) card.appendChild(kit.el("h3", null, s.fill(entry.h3)));
+
+          var paragraphs = entry.p == null ? [] : [].concat(entry.p);
+          paragraphs.forEach(function (text) {
+            card.appendChild(kit.el("p", null, s.fill(text)));
+          });
+
+          if (entry.ul) card.appendChild(s.list(entry.ul));
+
+          // The "never do" checklist is generated from POLICY_INFO.neverDo,
+          // so removing an id there removes the row in every language.
+          if (entry.checklist) {
+            var items = (s.info.neverDo || [])
+              .map(function (id) { return t.practices[id]; })
+              .filter(Boolean);
+            card.appendChild(s.list(items, "never"));
+          }
+        });
+
+        body.appendChild(card);
+      });
+    },
+
+    extraFooter: function (s, foot) {
+      var note = s.strings.footerNote;
+      if (!note) return;
+      // footerNote is a sentence, not a list item — give it its own line.
+      var line = kit.el("span", "note-line", s.fill(note));
+      line.style.flexBasis = "100%";
+      line.style.fontSize = "0.75rem";
+      line.style.opacity = ".9";
+      foot.appendChild(line);
+    }
+  });
+})();
+</script>
+</body>
+</html>

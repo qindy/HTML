@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Last Bell</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .hero-title { font-size: 1.5rem; font-weight: 680; letter-spacing: -0.02em; margin: 2.5rem 0 0.35rem; }
+  .hero-sub { color: var(--muted); margin: 0 0 1.75rem; font-size: 0.9375rem; }
+  .link-card { display: block; text-decoration: none; color: inherit; }
+  .link-card h2 { color: var(--ink); margin-bottom: 0.2rem; }
+  .link-card p { color: var(--muted); font-size: 0.875rem; margin: 0; }
+  .link-card .arrow { float: right; color: var(--muted); margin-top: 0.15rem; }
+  .link-card:active { opacity: .8; }
+</style>
+</head>
+<body>
+
+<main class="wrap">
+  <p class="hero-title">Last Bell</p>
+  <p class="hero-sub">Screen time, on your own terms — and entirely on your device.</p>
+
+  <a class="link-card card hero" href="privacy.html">
+    <span class="arrow">›</span>
+    <h2>Privacy Policy</h2>
+    <p>What stays on your iPhone, what never leaves it, and how blocking works.</p>
+  </a>
+
+  <a class="link-card card" href="support.html">
+    <span class="arrow">›</span>
+    <h2>Support &amp; FAQ</h2>
+    <p>Blocked apps that still open, forgotten passcodes, purchases, statistics.</p>
+  </a>
+
+  <footer class="end">
+    <span>© <span id="year">2026</span> Last Bell</span>
+    <span class="dot">·</span>
+    <a href="mailto:qq595187561@gmail.com">qq595187561@gmail.com</a>
+  </footer>
+</main>
+
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

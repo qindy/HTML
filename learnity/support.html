@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="index, follow">
+<title>Support</title>
+<meta name="description" content="Help and FAQ for Last Bell: blocked apps that still open, forgotten passcodes, purchases, screen-time statistics.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <span class="mark" aria-hidden="true">L</span>
+      <h1 id="docTitle">Support</h1>
+    </div>
+    <div class="picker">
+      <select id="langPicker" aria-label="Language"></select>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="lede" id="lede"></p>
+  <div class="chips" id="chips"></div>
+  <div id="body"></div>
+  <footer class="end" id="footer"></footer>
+</main>
+
+<noscript>
+  <p style="padding:1.5rem;text-align:center;color:#727e8b">
+    This page needs JavaScript to show the FAQ in your language.
+  </p>
+</noscript>
+
+<script src="doc.js"></script>
+<script src="support-data.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var kit = window.DocKit;
+
+  kit.boot({
+    info: window.SUPPORT_INFO,
+    text: window.SUPPORT_TEXT,
+    langs: window.SUPPORT_LANGS,
+    names: window.SUPPORT_NATIVE_NAMES,
+    storeKey: "learnity.support.lang",
+
+    render: function (s) {
+      var t = s.strings;
+      var body = document.getElementById("body");
+
+      // ---- intro ----
+      document.getElementById("lede").textContent = s.fill(t.lede);
+
+      var chips = document.getElementById("chips");
+      chips.textContent = "";
+      chips.appendChild(kit.el("span", "chip", t.chipUpdated + " " + s.date(s.info.updatedDate)));
+      chips.appendChild(kit.el("span", "chip", s.fill(t.chipReply)));
+
+      // ---- FAQ ----
+      var faq = kit.el("section", "card");
+      faq.appendChild(kit.el("h2", null, s.fill(t.faqH)));
+
+      t.faq.forEach(function (item, index) {
+        var details = kit.el("details", "qa");
+        if (index === 0) details.open = true;
+
+        var summary = kit.el("summary");
+        summary.appendChild(kit.el("span", "q", s.fill(item.q)));
+        summary.appendChild(kit.el("span", "plus", "+"));
+        details.appendChild(summary);
+
+        details.appendChild(kit.el("div", "a", s.fill(item.a)));
+        faq.appendChild(details);
+      });
+
+      body.appendChild(faq);
+
+      // ---- what to include ----
+      var tips = kit.el("section", "card");
+      tips.appendChild(kit.el("h2", null, s.fill(t.tipsH)));
+      if (t.tipsP) tips.appendChild(kit.el("p", null, s.fill(t.tipsP)));
+      if (t.tips && t.tips.length) tips.appendChild(s.list(t.tips));
+      body.appendChild(tips);
+
+      // ---- contact ----
+      // Deliberately after "before you write": the list primes the reader, the
+      // button closes the section. A CTA above the FAQ sends people to email
+      // before they have read the answer that already exists.
+      var contact = kit.el("section", "card hero");
+      contact.appendChild(kit.el("h2", null, s.fill(t.contactH)));
+      contact.appendChild(kit.el("p", null, s.fill(t.contactP)));
+
+      var mail = kit.el("a", "btn");
+      mail.href = "mailto:" + s.info.email;
+      mail.appendChild(kit.el("span", null, "\u2709"));
+      mail.appendChild(kit.el("span", null, s.info.email));
+      contact.appendChild(mail);
+      body.appendChild(contact);
+
+      // ---- privacy ----
+      var policy = kit.el("section", "card");
+      policy.appendChild(kit.el("h2", null, s.fill(t.policyH)));
+      policy.appendChild(kit.el("p", null, s.fill(t.policyP)));
+
+      var link = kit.el("a", null, t.policyLink || "Privacy policy");
+      // Relative on purpose: the same href works inside the app bundle and
+      // when the folder is served from GitHub Pages.
+      link.href = "privacy.html";
+      policy.appendChild(link);
+      body.appendChild(policy);
+    },
+
+    extraFooter: function (s, foot) {
+      var note = s.strings.footerNote;
+      if (!note) return;
+      var line = kit.el("span", null, s.fill(note));
+      line.style.flexBasis = "100%";
+      line.style.fontSize = "0.75rem";
+      line.style.opacity = ".9";
+      foot.appendChild(line);
+    }
+  });
+})();
+</script>
+</body>
+</html>
