@@ -40,14 +40,14 @@ window.SUPPORT_INFO = {
   /* ---- product name --------------------------------------------------- */
 
   appName: {
-    en: "Last Bell",
+    en: "Postbell",
     "zh-Hant": "放學後",
     "zh-Hans": "放学后",
     ja: "放課後",
-    de: "Last Bell",
-    es: "Last Bell",
-    fr: "Last Bell",
-    nl: "Last Bell"
+    de: "Postbell",
+    es: "Postbell",
+    fr: "Postbell",
+    nl: "Postbell"
   }
 };
 
